@@ -32,8 +32,8 @@ You'll need:
 Clone it, install dependencies:
 
 ```bash
-git clone <your-fork-or-repo-url>
-cd ferox-music
+git clone https://github.com/RexyExo/FeroX-Music-.git
+cd ferox-music-
 npm install
 ```
 
