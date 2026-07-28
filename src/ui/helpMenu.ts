@@ -48,7 +48,7 @@ export function buildHelpMenu(category = 'Home', client: CreoClient, userId?: st
 
   const selectRow = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(
     new StringSelectMenuBuilder()
-      .setCustomId(`${getCustomIdPrefix(client)}:help_select`)
+      .setCustomId(`${getCustomIdPrefix(client)}:help_select${userId ? `:${userId}` : ''}`)
       .setPlaceholder('Select a category...')
       .addOptions(
         { label: "Home", description: "Return to the main help menu", emoji: emojis.general.home, value: "Home" },
