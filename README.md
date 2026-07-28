@@ -1,105 +1,117 @@
-# Creo Music Bot
+# FeroX Music
 
-A premium, highly-customizable Discord music bot built with Discord.js v14, TypeScript, Prisma (SQLite), and Kazagumo (Lavalink).
+A Discord music bot I built because every "free" music bot out there either sounds terrible, dies every two weeks from a Discord API change, or locks basic loop/queue features behind a paywall. This one's mine, it's fast, and it doesn't do that.
 
-## Features
+Built on Discord.js v14 + Kazagumo/Shoukaku (Lavalink) for playback, Prisma + SQLite for storage, and the new Components V2 UI so the player panel actually looks like something from 2024 and not a Discord.js tutorial from 2019.
 
-- **High-Quality Music Playback:** Connects to Lavalink nodes via Kazagumo and Shoukaku for lag-free, high-quality audio.
-- **Premium UI:** Uses Discord's modern Canvas components (Containers, Text Displays, Buttons, Menus) for a stunning "Creo" themed interface.
-- **Advanced Features:** Autoplay, filters, volume control, queue management, and a robust Liked Songs (`/liked`) system.
-- **Full Customization:** Users can configure bot prefix, bio, avatar, and banner directly from Discord commands.
-- **Admin System:** Granular control with No-Prefix durations, Premium features, and specific Owner/Admin badges on user profiles.
+Maintained under **FeroX Devs**.
 
----
+## What it actually does
 
-## 🚀 Getting Started
+- Plays from YouTube, Spotify, SoundCloud, Deezer and JioSaavn — pick your default engine per-user with `/engine`, no more typing "sc:" or "sp:" before every query
+- A proper interactive player panel with buttons for pause, skip, rewind/forward, loop, shuffle, autoplay and liking a track — no reactions, no dead buttons
+- Autoplay that actually queues something relevant when your queue runs dry, instead of just leaving the VC
+- Audio filters (bass boost, nightcore, vaporwave, 8D, karaoke, and a few more) you can stack from a dropdown
+- Playlists and liked songs saved per-user, so your queue isn't wiped the second the bot restarts
+- Both slash commands and prefix commands work side by side, including a no-prefix mode for whoever you decide deserves it
+- 24/7 mode so the bot stays connected in a voice channel instead of leaving after every song
+- Per-server config: custom prefix, ignored channels, auto-reactions, auto-responses
+- A small premium tier system (custom bot bio/avatar/banner/nameplate per server) if you want to monetize it, or just rip that out if you don't care
 
-### Prerequisites
+## Before you start
 
-Before you start, ensure you have the following installed on your system:
-- **Node.js** (v18 or higher recommended)
-- **Lavalink Server** (You will need a Lavalink node running to play music. Lavalink v4 is supported via Kazagumo)
-- **TypeScript** (Can be installed via `npm i -g typescript`)
+You'll need:
 
-### 1. Installation
+- Node.js 18+
+- A running Lavalink server (v4). Kazagumo talks to it, the bot doesn't play audio on its own
+- A Discord bot token and its client ID
+- SQLite is the default DB, no separate database server needed, but you can swap the Prisma datasource if you want Postgres/MySQL later
 
-Clone this repository and install all required dependencies:
+## Setting it up
+
+Clone it, install dependencies:
 
 ```bash
-# Install NPM dependencies
+git clone <your-fork-or-repo-url>
+cd ferox-music
 npm install
 ```
 
-### 2. Configuration
-
-Create a `.env` file in the root directory and fill it out with your configuration details:
+Copy `example.env` to `.env` and fill in your actual values:
 
 ```env
-# Bot Credentials
-BOT_TOKEN=YOUR_DISCORD_BOT_TOKEN
-CLIENT_ID=YOUR_BOT_CLIENT_ID
+BOT_TOKEN=your bot token
+CLIENT_ID=your bot's client id
 DATABASE_URL=file:./creo.db
 
-# Lavalink Node Configuration
 LAVALINK_URL=localhost:2333
 LAVALINK_AUTH=youshallnotpass
 LAVALINK_NAME=MainNode
 
-# General Configuration
-PREFIX=$
-OWNER_ID=YOUR_DISCORD_USER_ID,ANOTHER_OWNER_ID
+PREFIX=.
+OWNER_ID=your discord user id, comma separated if there's more than one owner
 ```
 
-*(Note: Replace `YOUR_DISCORD_BOT_TOKEN`, `YOUR_BOT_CLIENT_ID`, and your Lavalink details with actual values)*
+If you're using Spotify search, also drop in `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` from the Spotify developer dashboard. Don't rely on this being optional forever, get your own keys.
 
-### 3. Database Setup
-
-Creo Music uses **Prisma** with a local **SQLite** database (`creo.db`). Before running the bot for the first time, you must initialize the database schema:
+Push the Prisma schema to generate your local database:
 
 ```bash
-# Push the Prisma schema to the database (creates creo.db)
+npx prisma generate
 npx prisma db push
 ```
 
-### 4. Running the Bot
-
-You can start the bot using either the development script (which automatically restarts on file changes) or the production script:
+Then run it:
 
 ```bash
-# For Development (using nodemon and ts-node)
-npm run dev
-
-# For Production (using ts-node directly)
-npm run start
+npm run dev     # ts-node with nodemon, restarts on file changes
+npm start        # plain ts-node, for production-ish usage
 ```
 
----
+The bot uses Discord's `ShardingManager`, so `src/index.ts` is the actual entry point that spawns shard processes, not `src/bot.ts` directly.
 
-## 📂 Project Structure
+## Commands
 
-- `/src/bot.ts` - Main Client initialization and database connections.
-- `/src/commands` - Contains all slash & prefix commands grouped by category (music, general, config, owner, etc.).
-- `/src/events` - Discord event listeners (`ready`, `messageCreate`, `interactionCreate`) and Lavalink events (`trackStart`, `trackEnd`, etc.).
-- `/src/handlers` - Handlers to dynamically load commands, events, and UI component routes.
-- `/src/ui` - Contains the premium UI builders (`playerEmbed`, `helpMenu`, `containers`) for the beautiful Canvas UI.
-- `/src/utils/emojis.json` - Centralized JSON file where you can customize every single emoji the bot uses.
+**Music**
+`play`, `search`, `pause`, `resume`, `skip`, `stop`, `disconnect`, `join`, `queue`, `clearqueue`, `nowplaying`, `loop`, `shuffle`, `seek`, `replay`, `volume`, `autoplay`, `filters`, `engine`, `liked`, `playlist`
 
----
+**General**
+`help`, `info`, `ping`, `stats`, `invite`, `support`, `vote`, `avatar`, `banner`, `profile`
 
-## 🛠️ Management & Customization
+**Fun**
+`hug`, `kiss`, `pat`, `slap`, `ship`
 
-### Emojis
-You can customize the bot's look by editing the `src/utils/emojis.json` file. All commands automatically sync with the emojis defined here. Remember to only use valid Unicode emojis or Custom Emojis in the `<:name:id>` format!
+**Server config** (admin only)
+`ignore`, `react`, `respond`
 
-### Bot Customization Commands
-As an owner, you can directly change the bot's appearance via Discord:
-- `/bprefix <new_prefix>` - Change the global prefix.
-- `/bpfp <url>` - Change the bot's avatar.
-- `/bbio <text>` - Change the bot's "About Me" bio.
+**Premium**
+`247`, `bprefix`, `bbio`, `bpfp`, `bbanner`, `bnameplate`
 
-### Granting Access
-You can grant users special privileges via the `/admin`, `/premium`, and `/np` (No Prefix) commands. They will automatically receive shiny badges on their `/profile`!
+**Owner only**
+`admin`, `premium`, `noprefix`, `gnameplate`, `reload`, `restart`
 
----
+Full list with live descriptions is always available in-app via `/help`.
 
-**Made with ❤️ by FeroX Devs**
+## Project layout
+
+```
+src/
+  bot.ts              client setup, Kazagumo init, boot sequence
+  index.ts             sharding manager entry point
+  commands/            one file per command, grouped by category
+  events/               discord.js + kazagumo event listeners
+  events/music/        track start/end/empty/exception handlers
+  handlers/             loads commands/events, routes buttons & selects
+  managers/            per-guild player state, filters
+  ui/                   Components V2 builders (player panel, containers, help menu)
+  utils/                 misc helpers: emojis, formatting, voice status, lyrics, etc.
+prisma/
+  schema.prisma         all the DB models (guild config, playlists, premium, etc.)
+```
+
+If you're adding a command, drop a file in the right `commands/<category>/` folder with a `data` (SlashCommandBuilder) and `execute` export, that's it, the command handler picks it up automatically on boot. Add `prefixExecute` too if you want it to also work as a text command.
+
+
+## License & credit
+
+Built and maintained by FeroX Devs. Do whatever you want with it, just don't strip the credit and resell it as your own bot without at least asking first.
