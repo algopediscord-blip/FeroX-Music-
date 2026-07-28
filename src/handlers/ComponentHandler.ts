@@ -237,6 +237,17 @@ export class ComponentHandler {
         return;
       }
 
+      if (action === 'help_trigger' || action === 'help') {
+        const callerId = parts[3] || parts[2];
+        if (callerId && interaction.user.id !== callerId) {
+          await interaction.reply(ephemeralCV2(error('Only the user who mentioned the bot can use this button.')) as any);
+          return;
+        }
+        const ui = buildHelpMenu('Home', this.client, interaction.user.id);
+        await interaction.update(cv2(ui) as any);
+        return;
+      }
+
       const musicActions = ['pause', 'skip', 'prev', 'rewind', 'forward', 'stop', 'loop', 'shuffle', 'autoplay', 'heart'];
       if (musicActions.includes(action) && !inSameVoiceChannel(interaction as any)) {
         await interaction.reply(ephemeralCV2(error('You must be in the same voice channel as me to use this.')) as any);
