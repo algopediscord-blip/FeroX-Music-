@@ -1,4 +1,4 @@
-import { Client, Collection, GatewayIntentBits } from 'discord.js';
+import { Client, Collection, GatewayIntentBits, Options } from 'discord.js';
 import { Kazagumo, KazagumoOptions } from 'kazagumo';
 import { Connectors } from 'shoukaku';
 import { PrismaClient } from '@prisma/client';
@@ -19,7 +19,7 @@ export class CreoClient extends Client {
   public commands: Collection<string, Command> = new Collection();
   public aliases: Collection<string, string> = new Collection();
   public db: PrismaClient = new PrismaClient({});
-  public cache: NodeCache = new NodeCache({ stdTTL: 60, checkperiod: 120 });
+  public cache: NodeCache = new NodeCache({ stdTTL: 60, checkperiod: 120, maxKeys: 1000 });
   public music!: Kazagumo;
   public guildPlayers: Collection<string, GuildPlayer> = new Collection();
 
@@ -36,6 +36,25 @@ export class CreoClient extends Client {
         GatewayIntentBits.MessageContent,
         GatewayIntentBits.GuildVoiceStates,
       ],
+      makeCache: Options.cacheWithLimits({
+        MessageManager: 10,
+        StageInstanceManager: 0,
+        PresenceManager: 0,
+        ReactionManager: 0,
+        ThreadManager: 0,
+        ThreadMemberManager: 0,
+        GuildBanManager: 0,
+        GuildInviteManager: 0,
+        GuildStickerManager: 0,
+        GuildScheduledEventManager: 0,
+        AutoModerationRuleManager: 0,
+      }),
+      sweepers: {
+        messages: {
+          interval: 300,
+          lifetime: 600,
+        },
+      },
       allowedMentions: { repliedUser: false },
     });
   }
