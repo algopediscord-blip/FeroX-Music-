@@ -12,11 +12,14 @@ try {
     console.error('[SYSTEM WARNING] Pre-start build step encountered an error:', error);
 }
 
-const targetFile = fs.existsSync('./dist/index.js') ? './dist/index.js' : 'src/index.ts';
-console.log(`[SYSTEM] Starting bot with low-RAM optimization (${targetFile})...`);
+const hasBuiltJs = fs.existsSync('./dist/index.js');
 
-const child = spawn('node', ['--max-old-space-size=256', targetFile], { stdio: 'inherit' });
-
-child.on('exit', (code) => {
-    process.exit(code);
-});
+if (hasBuiltJs) {
+    console.log('[SYSTEM] Starting bot in Lightweight Production Mode (dist/index.js)...');
+    const child = spawn('node', ['--max-old-space-size=256', './dist/index.js'], { stdio: 'inherit' });
+    child.on('exit', (code) => process.exit(code));
+} else {
+    console.log('[SYSTEM] Starting bot in TypeScript Mode (src/index.ts)...');
+    const child = spawn('npx', ['ts-node', '--transpile-only', 'src/index.ts'], { stdio: 'inherit', shell: true });
+    child.on('exit', (code) => process.exit(code));
+}
