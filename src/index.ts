@@ -4,7 +4,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.get('/', (_req: any, res: any) => res.send('Bot activo'));
-app.listen(port, () => console.log(`Puerto ${port} listo`));
+
+app.listen(Number(port), '0.0.0.0', () => {
+    console.log(`Servidor HTTP listo en el puerto ${port}`);
+});
+
 
 import { ShardingManager } from 'discord.js';
 import { join } from 'path';
