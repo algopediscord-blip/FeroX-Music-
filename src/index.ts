@@ -35,13 +35,11 @@ console.log(chalk.gray(`    [SYSTEM] Initializing FeroX Sharding Manager...`));
 process.env.TS_NODE_TRANSPILE_ONLY = 'true';
 
 const isTypeScript = __filename.endsWith('.ts') || process.env.TS_NODE === 'true' || !!process.env.TS_NODE_TRANSPILE_ONLY;
-const targetBotFile = join(__dirname, isTypeScript ? 'bot.ts' : 'bot.js');
+const targetBotFile = join(__dirname, 'bot.js');
 
 const manager = new ShardingManager(targetBotFile, {
   token: process.env.BOT_TOKEN,
-  execArgv: isTypeScript 
-    ? ['-r', 'ts-node/register', '--max-old-space-size=256'] 
-    : ['--max-old-space-size=256']
+  execArgv: ['--max-old-space-size=256']
 });
 
 manager.on('shardCreate', shard => {
