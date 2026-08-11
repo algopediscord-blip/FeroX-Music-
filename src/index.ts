@@ -1,3 +1,11 @@
+// @ts-ignore
+import express from 'express';
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get('/', (_req: any, res: any) => res.send('Bot activo'));
+app.listen(port, () => console.log(`Puerto ${port} listo`));
+
 import { ShardingManager } from 'discord.js';
 import { join } from 'path';
 import 'dotenv/config';
