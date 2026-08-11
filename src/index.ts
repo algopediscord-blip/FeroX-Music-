@@ -1,3 +1,10 @@
+import express from 'express';
+const app = express();
+const port = process.env.PORT || 3000;
+
+app.get('/', (req, res) => res.send('Bot activo'));
+app.listen(port, () => console.log(`HTTP listo en puerto ${port}`));
+
 import { ShardingManager } from 'discord.js';
 import { join } from 'path';
 import 'dotenv/config';
