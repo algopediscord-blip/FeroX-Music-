@@ -167,7 +167,7 @@ export class CreoClient extends Client {
       }, 60 * 60 * 1000);
 
       console.log(chalk.gray('      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'));
-      console.log(`      ${themeGradient('» FeroX Music is now Online and Ready «')}`);
+      console.log(`      ${themeGradient('» Algope Music is now Online and Ready «')}`);
       console.log(chalk.gray('      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n'));
     }
   }
