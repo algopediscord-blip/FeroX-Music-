@@ -65,7 +65,7 @@ export default {
       .setThumbnailAccessory(new ThumbnailBuilder().setURL(targetUser.displayAvatarURL({ size: 4096 })))
       .addTextDisplayComponents(
         new TextDisplayBuilder().setContent(
-          `# ${emojis.general.stats} User Profile\n### *Creo - Made By FeroX Devs*\n\n> ${emojis.general.dot} **User:** <@${targetUser.id}>\n> ${emojis.general.dot} **ID:** \`${targetUser.id}\`\n> ${emojis.general.dot} **Created:** ${createdAt}\n\n> ${emojis.general.customization} **NoPrefix Status**\n> ${emojis.general.dot} **Access:** \`${npAccess}\`\n> ${emojis.general.dot} **Status:** \`${npStatus}\``
+          `# ${emojis.general.stats} User Profile\n### *Algope Music - Made By Algope*\n\n> ${emojis.general.dot} **User:** <@${targetUser.id}>\n> ${emojis.general.dot} **ID:** \`${targetUser.id}\`\n> ${emojis.general.dot} **Created:** ${createdAt}\n\n> ${emojis.general.customization} **NoPrefix Status**\n> ${emojis.general.dot} **Access:** \`${npAccess}\`\n> ${emojis.general.dot} **Status:** \`${npStatus}\``
         )
       );
     c1.addSectionComponents(s1);
