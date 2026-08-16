@@ -50,7 +50,7 @@ export default {
                                     const s1 = new SectionBuilder()
       .setThumbnailAccessory(new ThumbnailBuilder().setURL(bannerUrl))
       .addTextDisplayComponents(
-        new TextDisplayBuilder().setContent(`# ${emojis.general.customization} ${targetUser.displayName}'s Banner\n\n> ${emojis.general.dot} **[Click here to download](${bannerUrl})**\n\n-# Creo - Made By FeroX Devs`)
+        new TextDisplayBuilder().setContent(`# ${emojis.general.customization} ${targetUser.displayName}'s Banner\n\n> ${emojis.general.dot} **[Click here to download](${bannerUrl})**\n\n-# Algope Music - Made By Algope`)
       );
     c1.addSectionComponents(s1);
 
