@@ -30,7 +30,7 @@ const ascii = `
 
 console.log(themeGradient.multiline(ascii));
 console.log(chalk.gray('    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'));
-console.log(chalk.gray(`    [SYSTEM] Initializing FeroX Sharding Manager...`));
+console.log(chalk.gray(`    [SYSTEM] Initializing Algope Sharding Manager...`));
 
 process.env.TS_NODE_TRANSPILE_ONLY = 'true';
 
