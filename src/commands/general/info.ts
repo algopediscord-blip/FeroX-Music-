@@ -7,7 +7,7 @@ import emojis from '../../utils/emojis';
 export default {
   data: new SlashCommandBuilder()
     .setName('info')
-    .setDescription('View information about the Creo bot.'),
+    .setDescription('View information about Algope Music.'),
   category: 'general',
   aliases: ['info'],
 
