@@ -7,7 +7,7 @@ import emojis from '../../utils/emojis';
 export default {
   data: new SlashCommandBuilder()
     .setName('info')
-    .setDescription('View information about Algope Music🎵.'),
+    .setDescription('View information about Algope Music.'),
   category: 'general',
   aliases: ['info'],
 
@@ -35,7 +35,7 @@ export default {
     const c = new ContainerBuilder();
 
     c.addTextDisplayComponents(
-      new TextDisplayBuilder().setContent(`# ${emojis.general.music} Algope Music🎵\n### *A Premium Experience Made By Algope🌹*\n\n> ${emojis.general.settings} **Bot Settings**\n> ${emojis.general.dot} **Prefix:** \`${prefix}\`\n> ${emojis.general.dot} **Command Mode:** \`Hybrid (Slash & Prefix)\`\n\n> ${emojis.general.stats_icon} **Bot Statistics**\n> ${emojis.general.dot} **Servers:** ${servers}\n> ${emojis.general.dot} **Users:** ${users.toLocaleString()}\n\n-# Use \`${prefix}help\` or type \`/\` to explore commands!`)
+      new TextDisplayBuilder().setContent(`# ${emojis.general.music} Algope Music\n### *A Premium Experience Made By Algope*\n\n> ${emojis.general.settings} **Bot Settings**\n> ${emojis.general.dot} **Prefix:** \`${prefix}\`\n> ${emojis.general.dot} **Command Mode:** \`Hybrid (Slash & Prefix)\`\n\n> ${emojis.general.stats_icon} **Bot Statistics**\n> ${emojis.general.dot} **Servers:** ${servers}\n> ${emojis.general.dot} **Users:** ${users.toLocaleString()}\n\n-# Use \`${prefix}help\` or type \`/\` to explore commands!`)
     );
 
     c.addSeparatorComponents(new SeparatorBuilder());
