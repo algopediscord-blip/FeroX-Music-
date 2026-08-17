@@ -33,11 +33,11 @@ export default {
     const isPremium = await client.db.premiumUser.findUnique({ where: { userId: authorId } });
     const ownerIds = process.env.OWNER_ID?.split(',').map(id => id.trim()) || [];
     if (!isPremium && !ownerIds.includes(authorId)) {
-      return reply(cv2(container('This command is exclusively for Premium Users.', { title: 'Creo Premium', color: 'error' })) as any);
+      return reply(cv2(container('This command is exclusively for Premium Users.', { title: 'Algope Music Premium', color: 'error' })) as any);
     }
 
     if (!bio) {
-      return reply(cv2(container('Please provide a bio text or use `none` to reset.', { title: 'Creo Customization', color: 'error' })) as any);
+      return reply(cv2(container('Please provide a bio text or use `none` to reset.', { title: 'Algope Music Customization', color: 'error' })) as any);
     }
 
     const newBio = bio.toLowerCase() === 'none' ? null : bio;
@@ -50,9 +50,9 @@ export default {
       });
 
       const status = newBio === null ? 'reset' : 'updated';
-      await reply(cv2(container(`Successfully ${status} the bot's server-specific bio!`, { title: 'Creo Customization', color: 'success' })) as any);
+      await reply(cv2(container(`Successfully ${status} the bot's server-specific bio!`, { title: 'Algope Music Customization', color: 'success' })) as any);
     } catch (e: any) {
-      await reply(cv2(container(`Failed to update bio: \`${e.message || e}\``, { title: 'Creo Customization', color: 'error' })) as any);
+      await reply(cv2(container(`Failed to update bio: \`${e.message || e}\``, { title: 'Algope Music Customization', color: 'error' })) as any);
     }
   }
 };
