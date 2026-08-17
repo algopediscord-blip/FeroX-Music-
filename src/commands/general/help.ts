@@ -6,7 +6,7 @@ import { buildHelpMenu } from '../../ui/helpMenu';
 export default {
   data: new SlashCommandBuilder()
     .setName('help')
-    .setDescription('View the full help menu for Algope Music),
+    .setDescription('View the full help menu for Algope Music.'),
   category: 'general',
   aliases: ['h', 'commands'],
   async execute(interaction: ChatInputCommandInteraction, client: CreoClient) {
