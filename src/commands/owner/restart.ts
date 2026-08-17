@@ -57,7 +57,7 @@ export default {
     collector.on('collect', async (i: any) => {
       if (i.customId === 'confirm_restart') {
         try {
-          await i.update(cv2(container('Shutting down and restarting the bot...', { title: 'Creo Owner', color: 'success' })) as any);
+          await i.update(cv2(container('Shutting down and restarting the bot...', { title: 'Algope Music Owner', color: 'success' })) as any);
           setTimeout(() => {
             client.destroy();
             process.exit(0);
@@ -66,7 +66,7 @@ export default {
           await i.update(cv2(container(`Failed to restart: \`${e.message}\``, { title: 'Restart Error', color: 'error' })) as any);
         }
       } else {
-        await i.update(cv2(container('Restart cancelled.', { title: 'Creo Owner', color: 'error' })) as any);
+        await i.update(cv2(container('Restart cancelled.', { title: 'Algope Music Owner', color: 'error' })) as any);
       }
       collector.stop();
     });
