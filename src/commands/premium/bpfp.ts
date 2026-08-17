@@ -34,11 +34,11 @@ export default {
     const isPremium = await client.db.premiumUser.findUnique({ where: { userId: authorId } });
     const ownerIds = process.env.OWNER_ID?.split(',').map(id => id.trim()) || [];
     if (!isPremium && !ownerIds.includes(authorId)) {
-      return reply(cv2(container('This command is exclusively for Premium Users.', { title: 'Creo Premium', color: 'error' })) as any);
+      return reply(cv2(container('This command is exclusively for Premium Users.', { title: 'Algope Music Premium', color: 'error' })) as any);
     }
 
     if (!url) {
-      return reply(cv2(container('Please provide a URL or attach an image.', { title: 'Creo Customization', color: 'error' })) as any);
+      return reply(cv2(container('Please provide a URL or attach an image.', { title: 'Algope Music Customization', color: 'error' })) as any);
     }
 
     const targetUrl = url.toLowerCase() === 'none' ? null : url;
@@ -48,7 +48,7 @@ export default {
 
                 const res = await fetch(targetUrl).catch(() => null);
         if (!res || !res.ok) {
-          return reply(cv2(container('Failed to download image. Please check the URL.', { title: 'Creo Customization', color: 'error' })) as any);
+          return reply(cv2(container('Failed to download image. Please check the URL.', { title: 'Algope Music Customization', color: 'error' })) as any);
         }
         const buffer = await res.arrayBuffer();
         const mimeType = res.headers.get('content-type') || 'image/png';
@@ -72,9 +72,9 @@ export default {
       });
 
       const status = targetUrl === null ? 'reset' : 'updated';
-      await reply(cv2(container(`Successfully ${status} the bot's server-specific avatar!`, { title: 'Creo Customization', color: 'success' })) as any);
+      await reply(cv2(container(`Successfully ${status} the bot's server-specific avatar!`, { title: 'Algope Music Customization', color: 'success' })) as any);
     } catch (e: any) {
-      await reply(cv2(container(`Failed to update avatar: \`${e.message || e}\``, { title: 'Creo Customization', color: 'error' })) as any);
+      await reply(cv2(container(`Failed to update avatar: \`${e.message || e}\``, { title: 'Algope Music Customization', color: 'error' })) as any);
     }
   }
 };
