@@ -174,7 +174,7 @@ export class CreoClient extends Client {
 
   private initMusic() {
     const Nodes = [{
-      name: process.env.LAVALINK_NAME || 'CreoNode',
+      name: process.env.LAVALINK_NAME || 'Algope Music Node',
       url: process.env.LAVALINK_HOST || process.env.LAVALINK_URL || 'localhost:2333',
       auth: process.env.LAVALINK_PASSWORD || process.env.LAVALINK_AUTH || 'youshallnotpass',
       secure: process.env.LAVALINK_SECURE === 'true'
