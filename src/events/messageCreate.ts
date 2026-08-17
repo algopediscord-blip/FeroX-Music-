@@ -36,7 +36,7 @@ export default {
 
       const ui = container(content, { 
         title: `${emojis.general.stats_icon} Algope Music Introduction`,
-        footer: Algope Music • v1.0.0`
+        footer: `Algope Music • v1.0.0`
       });
 
       const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
