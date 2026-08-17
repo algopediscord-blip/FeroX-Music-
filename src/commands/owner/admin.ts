@@ -57,25 +57,25 @@ export default {
         update: {},
         create: { userId: user.id }
       });
-      await reply(cv2(container(`Successfully added <@${user.id}> to admin list.`, { title: 'Creo Admin', color: 'success' })) as any);
+      await reply(cv2(container(`Successfully added <@${user.id}> to admin list.`, { title: 'Algope Music Admin', color: 'success' })) as any);
     } else if (action === 'remove' && user) {
       const existing = await client.db.adminUser.findUnique({ where: { userId: user.id } });
       if (existing) {
         await client.db.adminUser.delete({ where: { userId: user.id } });
-        await reply(cv2(container(`Successfully removed <@${user.id}> from admin list.`, { title: 'Creo Admin', color: 'success' })) as any);
+        await reply(cv2(container(`Successfully removed <@${user.id}> from admin list.`, { title: 'Algope Music Admin', color: 'success' })) as any);
       } else {
-        await reply(cv2(container(`**${user.tag}** was not in the admin list.`, { title: 'Creo Admin', color: 'error' })) as any);
+        await reply(cv2(container(`**${user.tag}** was not in the admin list.`, { title: 'Algope Music Admin', color: 'error' })) as any);
       }
     } else if (action === 'list') {
       const data = await client.db.adminUser.findMany();
       if (data.length > 0) {
         const usersList = data.map(d => `<@${d.userId}> (\`${d.userId}\`)`).join('\n');
-        await reply(cv2(container(usersList, { title: 'Creo Admin Users', color: 'success' })) as any);
+        await reply(cv2(container(usersList, { title: 'Algope Music Admin Users', color: 'success' })) as any);
       } else {
-        await reply(cv2(container(`No admin users found.`, { title: 'Creo Admin Users', color: 'success' })) as any);
+        await reply(cv2(container(`No admin users found.`, { title: 'Algope Music Admin Users', color: 'success' })) as any);
       }
     } else {
-      await reply(cv2(container('Invalid action.', { title: 'Creo Admin', color: 'error' })) as any);
+      await reply(cv2(container('Invalid action.', { title: 'Algope Music Admin', color: 'error' })) as any);
     }
   }
 };
