@@ -64,7 +64,7 @@ export default {
             await client.commandHandler.load();
             await i.update(cv2(container('Successfully reloaded all commands.', { title: 'Algope Music Owner', color: 'success' })) as any);
           } else {
-            await i.update(cv2(container('Invalid reload target.', { title: 'Creo Owner', color: 'error' })) as any);
+            await i.update(cv2(container('Invalid reload target.', { title: 'Algope Music Owner', color: 'error' })) as any);
           }
         } catch (e: any) {
           await i.update(cv2(container(`Failed to reload \`${target}\`: \`${e.message}\``, { title: 'Reload Error', color: 'error' })) as any);
