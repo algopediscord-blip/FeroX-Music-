@@ -13,7 +13,7 @@ export function buildHelpMenu(category = 'Home', client: CreoClient, userId?: st
   const prefix = process.env.PREFIX || '$';
   const botId = client.user!.id;
 
-  const textTop = `# ${emojis.help.dance} Algope Music🎵 Help Menu\n### *A Premium Experience Made By Algope🌹*\n\n> ${emojis.general.stats} **Statistics**\n> ${emojis.general.dot} **Commands:** \`${commandCount}\`\n> ${emojis.general.dot} **Prefix:** \`${prefix}\`\n\n`;
+  const textTop = `# ${emojis.help.dance} Algope Music Help Menu\n### *A Premium Experience Made By Algope*\n\n> ${emojis.general.stats} **Statistics**\n> ${emojis.general.dot} **Commands:** \`${commandCount}\`\n> ${emojis.general.dot} **Prefix:** \`${prefix}\`\n\n`;
   const textBottom = `## ${emojis.help.peach} **Command Categories**\n\n> ${emojis.general.music} \`:\` **Music**\n> ${emojis.general.system} \`:\` **General**\n> ${emojis.general.autoreact} \`:\` **Config**\n> ${emojis.general.premium} \`:\` **Premium**\n> ${emojis.general.fun} \`:\` **Fun**\n\n-# Select a category from the dropdown below to explore commands!`;
 
   if (category === 'Home') {
