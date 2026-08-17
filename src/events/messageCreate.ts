@@ -23,7 +23,7 @@ export default {
     if (message.mentions.has(client.user!.id) && !message.mentions.everyone && message.content.trim() === `<@${client.user!.id}>`) {
       const dot = emojis.general.dot;
       const content = 
-        `## ${emojis.general.home} Welcome to Algope Music🎵\n` +
+        `## ${emojis.general.home} Welcome to Algope Music\n` +
         `I am a feature-rich music bot designed to provide the best audio experience on Discord.\n\n` +
         `### ${emojis.general.settings} Getting Started\n` +
         `${dot} **Prefix:** My prefix in this server is \`${prefix}\`\n` +
@@ -35,8 +35,8 @@ export default {
         `3. Use the interactive player buttons to control the music!`;
 
       const ui = container(content, { 
-        title: `${emojis.general.stats_icon} Algope Music🎵 Introduction`,
-        footer: Algope Music🎵 • v1.0.0`
+        title: `${emojis.general.stats_icon} Algope Music Introduction`,
+        footer: Algope Music • v1.0.0`
       });
 
       const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
