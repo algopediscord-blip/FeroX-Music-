@@ -35,7 +35,7 @@ export default {
     const s1 = new SectionBuilder()
       .setThumbnailAccessory(new ThumbnailBuilder().setURL(avatarUrl))
       .addTextDisplayComponents(
-        new TextDisplayBuilder().setContent(`# ${emojis.general.customization} ${targetUser.displayName}'s Avatar\n\n> ${emojis.general.dot} **[Click here to download](${avatarUrl})**\n\n-# Algope Music - Made By Algope`)
+        new TextDisplayBuilder().setContent(`# ${emojis.general.customization} ${targetUser.displayName}'s Avatar\n\n> ${emojis.general.dot} **[Click here to download](${avatarUrl})**\n\n-# Algope Music - Made By Algope🌹`)
       );
     c1.addSectionComponents(s1);
 
