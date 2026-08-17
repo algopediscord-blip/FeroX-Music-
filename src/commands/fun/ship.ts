@@ -150,7 +150,7 @@ export default {
       }
     } catch (e) {
       console.error('Ship command error:', e);
-      const msg = cv2(container('Something went wrong generating the ship card.', { title: 'Creo Fun', color: 'error' }));
+      const msg = cv2(container('Something went wrong generating the ship card.', { title: 'Algope Music Fun', color: 'error' }));
       if (isInteraction) {
         if (context.deferred || context.replied) {
           await context.editReply(msg).catch(() => {});
