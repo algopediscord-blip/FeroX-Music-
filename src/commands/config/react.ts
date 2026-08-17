@@ -64,7 +64,7 @@ export default {
         update: { reaction },
         create: { guildId: context.guildId!, trigger: trigger.toLowerCase(), reaction }
       });
-      await reply(cv2(container(`Successfully added auto-reaction for \`${trigger}\` ➔ ${reaction}`, { title: 'Creo Auto-React', color: 'success' })) as any);
+      await reply(cv2(container(`Successfully added auto-reaction for \`${trigger}\` ➔ ${reaction}`, { title: 'Algope Music Auto-React', color: 'success' })) as any);
     } catch (e: any) {
       await reply(cv2(container(`Failed to add auto-reaction: ${e.message}`, { title: 'Auto React', color: 'error' })) as any);
     }
@@ -82,7 +82,7 @@ export default {
       await client.db.autoReact.delete({
         where: { guildId_trigger: { guildId: context.guildId!, trigger: trigger.toLowerCase() } }
       });
-      await reply(cv2(container(`Successfully removed auto-reaction for \`${trigger}\`.`, { title: 'Creo Auto-React', color: 'success' })) as any);
+      await reply(cv2(container(`Successfully removed auto-reaction for \`${trigger}\`.`, { title: 'Algope Music Auto-React', color: 'success' })) as any);
     } catch (e: any) {
       await reply(cv2(container(`No auto-reaction found for \`${trigger}\`.`, { title: 'Auto React', color: 'error' })) as any);
     }
@@ -94,7 +94,7 @@ export default {
 
     const reacts = await client.db.autoReact.findMany({ where: { guildId: context.guildId! } });
     if (reacts.length === 0) {
-      return reply(cv2(container('No auto-reactions are currently set up in this server.', { title: 'Creo Auto-React', color: 'default' })) as any);
+      return reply(cv2(container('No auto-reactions are currently set up in this server.', { title: 'Algope Music Auto-React', color: 'default' })) as any);
     }
 
     const content = reacts.map(r => `\`${r.trigger}\` ➔ ${r.reaction}`).join('\n');
