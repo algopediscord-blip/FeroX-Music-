@@ -31,7 +31,7 @@ export default {
 
     const fullUser = await targetUser.fetch();
     if (!fullUser.banner) {
-      return reply(cv2(container('This user does not have a banner.', { title: 'Creo Info', color: 'error' })) as any);
+      return reply(cv2(container('This user does not have a banner.', { title: 'Algope Music Info', color: 'error' })) as any);
     }
 
     const bannerUrl = fullUser.bannerURL({ size: 4096, extension: 'png' });
