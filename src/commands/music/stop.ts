@@ -24,12 +24,12 @@ export default {
 
     const player = client.music.players.get(context.guildId!);
     if (!player) {
-      return reply(cv2(container('Not connected to a voice channel.', { title: 'Creo Music', color: 'error' })) as any);
+      return reply(cv2(container('Not connected to a voice channel.', { title: 'Algope Music', color: 'error' })) as any);
     }
 
     const member = context.member || await context.guild.members.fetch(isInteraction ? context.user.id : context.author.id).catch(() => null);
     if (!member || !member.voice.channel || member.voice.channel.id !== player.voiceId) {
-      return reply(cv2(container('You must be in the same voice channel as the bot.', { title: 'Creo Music', color: 'error' })) as any);
+      return reply(cv2(container('You must be in the same voice channel as the bot.', { title: 'Algope Music', color: 'error' })) as any);
     }
 
     try {
@@ -40,13 +40,13 @@ export default {
       if (is247) {
         player.queue.clear();
         player.shoukaku.stopTrack();
-        await reply(cv2(container('Stopped the music and cleared the queue. (24/7 Mode Active)', { title: 'Creo Music', color: 'success' })) as any);
+        await reply(cv2(container('Stopped the music and cleared the queue. (24/7 Mode Active)', { title: 'Algope Music', color: 'success' })) as any);
       } else {
         player.destroy();
-        await reply(cv2(container('Stopped the music and left the voice channel.', { title: 'Creo Music', color: 'success' })) as any);
+        await reply(cv2(container('Stopped the music and left the voice channel.', { title: 'Algope Music', color: 'success' })) as any);
       }
     } catch (e: any) {
-      await reply(cv2(container(`Failed to stop player: ${e.message}`, { title: 'Creo Music', color: 'error' })) as any);
+      await reply(cv2(container(`Failed to stop player: ${e.message}`, { title: 'Algope Music', color: 'error' })) as any);
     }
   }
 };
