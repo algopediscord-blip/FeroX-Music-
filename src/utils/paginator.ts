@@ -22,7 +22,7 @@ export function createPaginator(
   );
 
   container.addSeparatorComponents(new SeparatorBuilder().setSpacing(SeparatorSpacingSize.Small));
-  container.addTextDisplayComponents(new TextDisplayBuilder().setContent(`-# Page ${currentPage} / ${totalPages} • Algope Music - Made By Algope`));
+  container.addTextDisplayComponents(new TextDisplayBuilder().setContent(`-# Page ${currentPage} / ${totalPages} • Algope Music🎵 - Made By Algope🌹`));
 
   const row = new ActionRowBuilder<MessageActionRowComponentBuilder>().addComponents(
     new ButtonBuilder()
