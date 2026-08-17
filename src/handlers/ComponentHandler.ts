@@ -654,9 +654,9 @@ export class ComponentHandler {
             `${dot} **CPU Arch:** \`${process.arch}\``;
         } else if (choice === 'team') {
           title = `${emojis.general.team} Development Team`;
-          content = `${dot} **Lead Developer:** \`ferox.dev\`\n` +
-            `${dot} **Contributors:** \`ferox_devs_group\`\n` +
-            `${dot} **Support Server:** [Click Here](https://discord.gg/ferox-music)`;
+          content = `${dot} **Lead Developer:** \Algope\`\n` +
+            `${dot} **Contributors:** \`Algope_Devs_Group\`\n` +
+            `${dot} **Support Server:** [Click Here](https://discord.gg/FYtaPktSd)`;
         } else if (choice === 'ping') {
           title = `${emojis.general.ping} Latency Statistics`;
           content = `${dot} **Gateway Ping:** \`${this.client.ws.ping}ms\``; // simplified
