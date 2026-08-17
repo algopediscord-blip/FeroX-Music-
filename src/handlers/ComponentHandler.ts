@@ -630,7 +630,7 @@ export class ComponentHandler {
         let content = '';
         let title = '';
         const dot = emojis.general.dot;
-        const footer = `Laira • Made By FeroX Devs`;
+        const footer = `Laira • Made By Algope🌹`;
 
         if (choice === 'general') {
           title = `${emojis.general.stats} General Statistics`;
@@ -672,7 +672,7 @@ export class ComponentHandler {
 
         const botName = this.client.user?.username || 'Bot';
         const statsUI = new ContainerBuilder()
-          .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ${title}\n\n${content}\n\n-# ${botName} • Made By FeroX Devs`));
+          .addTextDisplayComponents(new TextDisplayBuilder().setContent(`# ${title}\n\n${content}\n\n-# ${botName} • Made By Algope🌹`));
 
         const select = new StringSelectMenuBuilder()
           .setCustomId(`${customPrefix}:stats_select:${callerId}`)
