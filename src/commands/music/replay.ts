@@ -28,19 +28,19 @@ export default {
 
     const player = client.music.players.get(context.guildId!);
     if (!player || !player.queue.current) {
-      return reply(cv2(container('No track currently playing.', { title: 'Creo Music', color: 'error' })) as any);
+      return reply(cv2(container('No track currently playing.', { title: 'Algope Music', color: 'error' })) as any);
     }
 
     const member = context.member || await context.guild.members.fetch(isInteraction ? context.user.id : context.author.id).catch(() => null);
     if (!member || !member.voice.channel || member.voice.channel.id !== player.voiceId) {
-      return reply(cv2(container('You must be in the same voice channel as the bot.', { title: 'Creo Music', color: 'error' })) as any);
+      return reply(cv2(container('You must be in the same voice channel as the bot.', { title: 'Algope Music', color: 'error' })) as any);
     }
 
     try {
       await player.seek(0);
-      await reply(cv2(container('Replaying the current track.', { title: 'Creo Music', color: 'default' })) as any);
+      await reply(cv2(container('Replaying the current track.', { title: 'Algope Music', color: 'default' })) as any);
     } catch (e: any) {
-      await reply(cv2(container(`Failed to replay track: ${e.message}`, { title: 'Creo Music', color: 'error' })) as any);
+      await reply(cv2(container(`Failed to replay track: ${e.message}`, { title: 'Algope Music', color: 'error' })) as any);
     }
   }
 };
