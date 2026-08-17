@@ -43,7 +43,7 @@ export default {
 
             const content = liked.slice(0, 15).map((t: any, i: number) => `**${i + 1}.** [${t.title}](${t.uri})`).join('\n');
       const footer = liked.length > 15 ? `\n\n*...and ${liked.length - 15} more tracks*` : '';
-      await reply(cv2(container(content + footer, { title: `# ${emojis.general.music} Your Liked Songs`, color: 'default', footer: 'Algope Music - Made By Algope' })) as any);
+      await reply(cv2(container(content + footer, { title: `# ${emojis.general.music} Your Liked Songs`, color: 'default', footer: 'Algope Music🎵 - Made By Algope🌹' })) as any);
     } catch (e: any) {
       await reply(cv2(container(`Error: ${e.message}`, { title: 'Creo Liked Songs', color: 'error' })) as any);
     }
