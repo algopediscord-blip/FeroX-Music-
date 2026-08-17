@@ -654,7 +654,7 @@ export class ComponentHandler {
             `${dot} **CPU Arch:** \`${process.arch}\``;
         } else if (choice === 'team') {
           title = `${emojis.general.team} Development Team`;
-          content = `${dot} **Lead Developer:** \Algope\`\n` +
+          content = `${dot} **Lead Developer:** \`Algope\`\n` +
             `${dot} **Contributors:** \`Algope_Devs_Group\`\n` +
             `${dot} **Support Server:** [Click Here](https://discord.gg/FYtaPktSd)`;
         } else if (choice === 'ping') {
