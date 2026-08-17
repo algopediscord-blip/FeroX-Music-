@@ -35,8 +35,8 @@ export default {
         `3. Use the interactive player buttons to control the music!`;
 
       const ui = container(content, { 
-        title: `${emojis.general.stats_icon} Algope Music Introduction`,
-        footer: `Algope Music • v1.0.0`
+        title: `${emojis.general.stats_icon} Algope Music🎵 Introduction`,
+        footer: Algope Music🎵 • v1.0.0`
       });
 
       const row = new ActionRowBuilder<ButtonBuilder>().addComponents(
