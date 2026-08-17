@@ -33,15 +33,15 @@ export default {
     const isPremium = await client.db.premiumUser.findUnique({ where: { userId: authorId } });
     const ownerIds = process.env.OWNER_ID?.split(',').map(id => id.trim()) || [];
     if (!isPremium && !ownerIds.includes(authorId)) {
-      return reply(cv2(container('This command is exclusively for Premium Users.', { title: 'Creo Premium', color: 'error' })) as any);
+      return reply(cv2(container('This command is exclusively for Premium Users.', { title: 'Algope Music Premium', color: 'error' })) as any);
     }
 
     if (!newPrefix) {
-      return reply(cv2(container('Please provide a new prefix.', { title: 'Creo Customization', color: 'error' })) as any);
+      return reply(cv2(container('Please provide a new prefix.', { title: 'Algope Music Customization', color: 'error' })) as any);
     }
 
     if (newPrefix.length > 5) {
-      return reply(cv2(container('Prefix must be 5 characters or less.', { title: 'Creo Customization', color: 'error' })) as any);
+      return reply(cv2(container('Prefix must be 5 characters or less.', { title: 'Algope Music Customization', color: 'error' })) as any);
     }
 
     try {
@@ -51,9 +51,9 @@ export default {
         create: { guildId: context.guildId!, prefix: newPrefix }
       });
 
-      await reply(cv2(container(`Successfully changed the bot's prefix to \`${newPrefix}\` for this server!`, { title: 'Creo Customization', color: 'success' })) as any);
+      await reply(cv2(container(`Successfully changed the bot's prefix to \`${newPrefix}\` for this server!`, { title: 'Algope Music Customization', color: 'success' })) as any);
     } catch (e: any) {
-      await reply(cv2(container(`Failed to update prefix: \`${e.message || e}\``, { title: 'Creo Customization', color: 'error' })) as any);
+      await reply(cv2(container(`Failed to update prefix: \`${e.message || e}\``, { title: 'Algope Music Customization', color: 'error' })) as any);
     }
   }
 };
