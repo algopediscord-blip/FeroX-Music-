@@ -68,7 +68,7 @@ export default {
         );
 
       const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(select);
-      const c = container(`Select the duration for **${user.tag}**'s no-prefix access:`, { title: 'Creo Noprefix' });
+      const c = container(`Select the duration for **${user.tag}**'s no-prefix access:`, { title: 'Algope Music Noprefix' });
       c.addActionRowComponents(row as any);
 
       await reply(isInteraction ? { ...ephemeralCV2(c), components: [row] } as any : cv2(c) as any);
@@ -77,20 +77,20 @@ export default {
       if (existing) {
         await client.db.noPrefixUser.delete({ where: { userId: user.id } });
         Logger.logNP('Removed', user, 'User was removed from the No-Prefix list.');
-        await reply(cv2(container(`Successfully removed **${user.tag}** from no-prefix list.`, { title: 'Creo Owner', color: 'success' })) as any);
+        await reply(cv2(container(`Successfully removed **${user.tag}** from no-prefix list.`, { title: 'Algope Music Owner', color: 'success' })) as any);
       } else {
-        await reply(cv2(container(`**${user.tag}** was not in the no-prefix list.`, { title: 'Creo Owner', color: 'error' })) as any);
+        await reply(cv2(container(`**${user.tag}** was not in the no-prefix list.`, { title: 'Algope Music Owner', color: 'error' })) as any);
       }
     } else if (action === 'status') {
       const data = await client.db.noPrefixUser.findUnique({ where: { userId: user.id } });
       if (data) {
         const expiry = data.expiresAt ? `<t:${Math.floor(data.expiresAt.getTime() / 1000)}:R>` : 'Lifetime';
-        await reply(cv2(container(`**User:** <@${user.id}>\n**Status:** Active\n**Expiry:** ${expiry}`, { title: 'Creo No-Prefix Status', color: 'success' })) as any);
+        await reply(cv2(container(`**User:** <@${user.id}>\n**Status:** Active\n**Expiry:** ${expiry}`, { title: 'Algope Music No-Prefix Status', color: 'success' })) as any);
       } else {
-        await reply(cv2(container(`**${user.tag}** does not have no-prefix access.`, { title: 'Creo No-Prefix Status', color: 'error' })) as any);
+        await reply(cv2(container(`**${user.tag}** does not have no-prefix access.`, { title: 'Algope Music No-Prefix Status', color: 'error' })) as any);
       }
     } else {
-      await reply(cv2(container('Invalid action.', { title: 'Creo Owner', color: 'error' })) as any);
+      await reply(cv2(container('Invalid action.', { title: 'Algope Music Owner', color: 'error' })) as any);
     }
   }
 };
