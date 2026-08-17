@@ -38,7 +38,7 @@ export default {
     try {
       const liked = await client.db.likedTrack.findMany({ where: { userId: authorId }, orderBy: { addedAt: 'desc' } });
       if (liked.length === 0) {
-        return reply(cv2(container('You have no liked songs yet.', { title: 'Creo Liked Songs', color: 'default' })) as any);
+        return reply(cv2(container('You have no liked songs yet.', { title: 'Algope Music Liked Songs', color: 'default' })) as any);
       }
 
             const content = liked.slice(0, 15).map((t: any, i: number) => `**${i + 1}.** [${t.title}](${t.uri})`).join('\n');
@@ -56,13 +56,13 @@ export default {
 
     const member = context.member || await context.guild.members.fetch(authorId).catch(() => null);
     if (!member || !member.voice.channel) {
-      return reply(cv2(container('You must be in a voice channel to play music.', { title: 'Creo Liked Songs', color: 'error' })) as any);
+      return reply(cv2(container('You must be in a voice channel to play music.', { title: 'Algope Music Liked Songs', color: 'error' })) as any);
     }
 
     try {
       const liked = await client.db.likedTrack.findMany({ where: { userId: authorId }, orderBy: { addedAt: 'asc' } });
       if (liked.length === 0) {
-        return reply(cv2(container('You have no liked songs to play.', { title: 'Creo Liked Songs', color: 'error' })) as any);
+        return reply(cv2(container('You have no liked songs to play.', { title: 'Algope Music Liked Songs', color: 'error' })) as any);
       }
 
       let player = client.music.players.get(context.guildId!);
@@ -98,7 +98,7 @@ export default {
         player.play();
       }
 
-      const successMsg = cv2(container(`Added **${loaded}** liked songs to the queue!`, { title: 'Creo Liked Songs', color: 'success' }));
+      const successMsg = cv2(container(`Added **${loaded}** liked songs to the queue!`, { title: 'Algope Music Liked Songs', color: 'success' }));
       if (isInteraction) {
         await context.editReply(successMsg as any);
       } else {
@@ -106,7 +106,7 @@ export default {
         await context.reply(successMsg as any);
       }
     } catch (e: any) {
-      await reply(cv2(container(`Error playing liked songs: ${e.message}`, { title: 'Creo Liked Songs', color: 'error' })) as any);
+      await reply(cv2(container(`Error playing liked songs: ${e.message}`, { title: 'Algope Music Liked Songs', color: 'error' })) as any);
     }
   }
 };
