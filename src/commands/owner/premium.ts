@@ -78,7 +78,7 @@ export default {
         
         const timeStr = `until <t:${Math.floor(expiresAt.getTime() / 1000)}:f>`;
         Logger.logPremium('Added', user, `User was granted premium access ${timeStr}.`);
-        await reply(cv2(container(`Successfully added <@${user.id}> to premium list ${timeStr}.`, { title: 'Creo Premium', color: 'success' })) as any);
+        await reply(cv2(container(`Successfully added <@${user.id}> to premium list ${timeStr}.`, { title: 'Algope Music Premium', color: 'success' })) as any);
       } else {
         const customPrefix = 'CreoX';
         const select = new StringSelectMenuBuilder()
@@ -94,7 +94,7 @@ export default {
           );
 
         const row = new ActionRowBuilder<StringSelectMenuBuilder>().addComponents(select);
-        const c = container(`Select the duration for <@${user.id}>'s premium access:`, { title: 'Creo Premium' });
+        const c = container(`Select the duration for <@${user.id}>'s premium access:`, { title: 'Algope Music Premium' });
         c.addActionRowComponents(row as any);
 
         await reply(isInteraction ? { ...ephemeralCV2(c), components: [row] } as any : cv2(c) as any);
@@ -104,29 +104,29 @@ export default {
       if (existing) {
         await client.db.premiumUser.delete({ where: { userId: user.id } });
         Logger.logPremium('Removed', user, 'User had their premium access revoked.');
-        await reply(cv2(container(`Successfully removed <@${user.id}> from premium list.`, { title: 'Creo Premium', color: 'success' })) as any);
+        await reply(cv2(container(`Successfully removed <@${user.id}> from premium list.`, { title: 'Algope Music Premium', color: 'success' })) as any);
       } else {
-        await reply(cv2(container(`**${user.tag}** was not in the premium list.`, { title: 'Creo Premium', color: 'error' })) as any);
+        await reply(cv2(container(`**${user.tag}** was not in the premium list.`, { title: 'Algope Music Premium', color: 'error' })) as any);
       }
     } else if (action === 'list') {
       const data = await client.db.premiumUser.findMany();
       if (data.length > 0) {
         const usersList = data.map(d => `<@${d.userId}> - ` + (d.expiresAt ? `<t:${Math.floor(d.expiresAt.getTime() / 1000)}:R>` : 'Lifetime')).join('\n');
-        await reply(cv2(container(usersList, { title: 'Creo Premium Users', color: 'success' })) as any);
+        await reply(cv2(container(usersList, { title: 'Algope Music Premium Users', color: 'success' })) as any);
       } else {
-        await reply(cv2(container(`No premium users found.`, { title: 'Creo Premium Users', color: 'success' })) as any);
+        await reply(cv2(container(`No premium users found.`, { title: 'Algope Music Premium Users', color: 'success' })) as any);
       }
     } else if (action === 'status') {
       const targetUser = user || context.author || context.user;
       const data = await client.db.premiumUser.findUnique({ where: { userId: targetUser.id } });
       if (data) {
         const expiry = data.expiresAt ? `<t:${Math.floor(data.expiresAt.getTime() / 1000)}:R>` : 'Lifetime';
-        await reply(cv2(container(`**User:** <@${targetUser.id}>\n**Status:** Premium Active 💎\n**Expiry:** ${expiry}`, { title: 'Creo Premium Status', color: 'success' })) as any);
+        await reply(cv2(container(`**User:** <@${targetUser.id}>\n**Status:** Premium Active 💎\n**Expiry:** ${expiry}`, { title: 'Algope Music Premium Status', color: 'success' })) as any);
       } else {
-        await reply(cv2(container(`**User:** <@${targetUser.id}>\n**Status:** Not Premium ❌`, { title: 'Creo Premium Status', color: 'error' })) as any);
+        await reply(cv2(container(`**User:** <@${targetUser.id}>\n**Status:** Not Premium ❌`, { title: 'Algope Music Premium Status', color: 'error' })) as any);
       }
     } else {
-      await reply(cv2(container('Invalid action.', { title: 'Creo Premium', color: 'error' })) as any);
+      await reply(cv2(container('Invalid action.', { title: 'Algope Music Premium', color: 'error' })) as any);
     }
   }
 };
